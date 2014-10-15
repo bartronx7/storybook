@@ -1,8 +1,51 @@
-<section class="page-content">
-<h1>The story so far...</h1>
-{{page.content}}
+<section class="page-content" ng-show="book.pages.length>0">
+
+  <h1>{{book.title}}</h1>
+
+  <div>
+    <page ng-repeat="page in book.pages" ng-show="page" content="{{page.content}}" context="book.characters"></page>
+  </div>
+
+  <section class="choice-panel">
+    <!-- <form name="choiceForm" ng-submit="makeChoice()"> -->
+    <div class="radio" ng-repeat="choice in choices">
+      <label >
+        <input type="radio" name="nextPage" ng-value="choice.pagenum" ng-model="$parent.nextPage">
+        <page content="{{choice.text}}" context="book.characters"></page>
+      </label>
+    </div>
+
+    <button type="submit" class="btn btn-default" ng-click="makeChoice()" ng-show="choices.length>0">Go</button>
+    <!-- </form> -->
+  </section>
 </section>
 
-<ul>
-  <li ng-foreach="link in page.links">{{link}}</li>
-</ul>
+
+
+<div class="newbookmodal" ng-show="book.pages.length<1">
+  <form name="newBookForm" ng-submit="createBook()">
+
+    <h3>Starting a new book, eh?</h3>
+
+    <div class="form-group">
+
+      <label for="bookTitle">Title of the book</label>
+      <input type="text" class="form-control" name="bookTitle" ng-model="bookTitle"
+        placeholder="My Book" maxlength="20" ng-minlength="1" required>
+
+      <label for="bookMainChar">Main character</label>
+      <input type="text" class="form-control" name="bookMainChar" ng-model="bookMainChar"
+        placeholder="Jon" maxlength="20" ng-minlength="1" required>
+
+      <label for="bookSecondChar">Second character</label>
+      <input type="text" class="form-control" name="bookSecondChar" ng-model="bookSecondChar"
+        placeholder="Samwell" maxlength="20" ng-minlength="1" required>
+
+      <button type="submit" class="btn btn-default">Start Book!</button>
+
+      <span ng-show="newBookError!==null">{{newBookError}}</span>
+
+    </div>
+
+  </form>
+</div>

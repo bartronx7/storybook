@@ -12,7 +12,7 @@ var PageSchema = new Schema({
   pagenum: Number,
   name: String,
   content: String,
-  link: [LinkSchema]
+  links: [LinkSchema]
 },{
 	id: false
 });

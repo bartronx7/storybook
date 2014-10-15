@@ -5,42 +5,55 @@
 
 'use strict';
 
-// var Thing = require('../api/thing/thing.model');
-
-
-// Thing.find({}).remove(function() {
-//   Thing.create({
-//     name : 'Development Tools',
-//     info : 'Integration with popular tools such as Bower, Grunt, Karma, Mocha, JSHint, Node Inspector, Livereload, Protractor, Jade, Stylus, Sass, CoffeeScript, and Less.'
-//   }, {
-//     name : 'Server and Client integration',
-//     info : 'Built with a powerful and fun stack: MongoDB, Express, AngularJS, and Node.'
-//   }, {
-//     name : 'Smart Build System',
-//     info : 'Build system ignores `spec` files, allowing you to keep tests alongside code. Automatic injection of scripts and styles into your index.html'
-//   },  {
-//     name : 'Modular Structure',
-//     info : 'Best practice client and server structures allow for more code reusability and maximum scalability'
-//   },  {
-//     name : 'Optimized Build',
-//     info : 'Build process packs up your templates as a single JavaScript payload, minifies your scripts/css/images, and rewrites asset names for caching.'
-//   },{
-//     name : 'Deployment Ready',
-//     info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
-//   });
-// });
-
-
 var Page = require('../api/page/page.model.js');
 
 Page.find({}).remove(function(){
 	Page.create({
 		pagenum: 1,
 		name: 'Begin',
-		content: 'The first page of the book starts here.',
+		content: 'It is 2pm on Wednesday. {{primary}} sits at the bar when {{secondary}} walks in carrying a ',
 		links: [{
-			text: 'Cast magic missile into the darkness',
+			text: 'sack of potatoes',
 			pagenum: 2
+		},{
+			text: 'suitcase handcuffed to her wrist',
+			pagenum: 3
 		}]
+	});
+	Page.create({
+		pagenum: 2,
+		name: 'Potato time',
+		content: 'sack of potatoes.  {{secondary}} throws the sack to the bartender and states, "That\'s for last night, keep the change" ',
+		links: [{
+			text: 'I don\'t even wanna know...',
+			pagenum: 4
+		}, {
+			text: 'What the hell?!',
+			pagenum: 4
+		}]
+	});
+	Page.create({
+		pagenum: 3,
+		name: 'Spy vs Spy',
+		content: 'suitcase handcuffed to her wrist. {{secondary}} quickly spin kicks {{primary}} in the jaw.  An epic karate battle takes place. ',
+		links: [{
+			text: 'Winded, they both take a moment to catch their breath and wonder why they were fighting in the first place. ',
+			pagenum: 4
+		},{
+			text: '{{primary}} is able to subdue {{secondary}} with a judo hip toss.  Now what is in that case? ',
+			pagenum: 5
+		}]
+	});
+	Page.create({
+		pagenum: 4,
+		name: 'Happy Ending',
+		content: '{{primary}} looks at {{secondary}} incredulously. {{secondary}} slaps {{primary}} on the back and laughs, "You wouldn\'t understand anways" and then walks out of the bar laughing heartily without paying the tab.',
+		links: []
+	});
+	Page.create({
+		pagenum: 5,
+		name: 'Cliffhanger',
+		content: 'Using the key in {{secondary}}\'s pocket, {{primary}} reveals the case to contain a large sack of potatoes...',
+		links: []
 	});
 });
